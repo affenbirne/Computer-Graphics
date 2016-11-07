@@ -1,7 +1,12 @@
-// SceneManager.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
+// A1.3.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
 //
+/*
+Command-Line in VS2015 Building tools:
+/GS /GL /analyze- /W3 /Gy /Zc:wchar_t /Zi /Gm- /O2 /Fd"Release\vc140.pdb" /Zc:inline /fp:precise /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_UNICODE" /D "UNICODE" /errorReport:prompt /WX- /Zc:forScope /Gd /Oy- /Oi /MD /Fa"Release\" /EHsc /nologo /Fo"Release\" /Fp"Release\A1.3.pch"
+Linker:
+/OUT:".\Release\A1.3.exe" /MANIFEST /LTCG:incremental /NXCOMPAT /PDB:".\Release\A1.3.pdb" /DYNAMICBASE "kernel32.lib" "user32.lib" "gdi32.lib" "winspool.lib" "comdlg32.lib" "advapi32.lib" "shell32.lib" "ole32.lib" "oleaut32.lib" "uuid.lib" "odbc32.lib" "odbccp32.lib" /MACHINE:X86 /OPT:REF /SAFESEH /INCREMENTAL:NO /PGD:".\Release\A1.3.pgd" /SUBSYSTEM:CONSOLE /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /ManifestFile:"Release\A1.3.exe.intermediate.manifest" /OPT:ICF /ERRORREPORT:PROMPT /NOLOGO /TLBID:1
+*/
 
-#include "stdafx.h"
 #include "Mesh.h"
 #include "SceneManager.h"
 #include <iostream>
@@ -18,11 +23,11 @@ ostream& operator<<(ostream& os, const Vector& vector)
 
 ostream& operator<<(ostream& os, const Mesh& mesh)
 {
-	os << mesh.id << " " <<mesh.name << " " << mesh.faces << " " << mesh.vertices << " " << mesh.scaling << " " << mesh.center;
+	os << mesh.id << " " << mesh.name << " " << mesh.faces << " " << mesh.vertices << " " << mesh.scaling << " " << mesh.center;
 	return os;
 };
 
-istream& operator>>(istream& is, Vector& vector)
+istream& operator >> (istream& is, Vector& vector)
 {
 	is >> vector.x;
 	is >> vector.y;
@@ -31,7 +36,7 @@ istream& operator>>(istream& is, Vector& vector)
 	return is;
 };
 
-istream& operator>>(istream& is, Mesh& mesh)
+istream& operator >> (istream& is, Mesh& mesh)
 {
 	is >> mesh.id >> mesh.name >> mesh.faces >> mesh.vertices >> mesh.scaling >> mesh.center;
 
@@ -43,7 +48,7 @@ void save_to_file(SceneManager& manager)
 {
 	ofstream file;
 	file.open("objects.txt");
-	
+
 	for (auto it = manager.meshs.begin(); it != manager.meshs.end(); ++it)
 	{
 		file << *it << endl;
@@ -149,10 +154,10 @@ int main()
 
 	bool run = true;
 	cout << "For creating a new mesh press m and ENTER." << endl;
-	cout << "For listing all meshs in ascending order press l and ENTER." << endl; 
+	cout << "For listing all meshs in ascending order press l and ENTER." << endl;
 	cout << "For removing a mesh press r and ENTER." << endl;
 	cout << "For exiting press e and ENTER. All meshes will be saved to objects.txt" << endl;
-	while (run) 
+	while (run)
 	{
 		switch (cin.get())
 		{
@@ -173,5 +178,6 @@ int main()
 			break;
 		}
 	}
-    return 0;
+	return 0;
 }
+

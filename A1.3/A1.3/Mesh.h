@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 struct Vector
 {
 	float x, y, z;
