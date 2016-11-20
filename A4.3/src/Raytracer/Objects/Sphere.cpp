@@ -67,6 +67,7 @@ bool Sphere::HitTest(const Ray &ray, RayHit &hit) const
 			dist = sqrt(dist / V);
 			// only positive value of interest
 			hit.Set(&ray, dist, this);
+			return true;
 		}
 		else {
 			float d1, d2;
@@ -81,15 +82,18 @@ bool Sphere::HitTest(const Ray &ray, RayHit &hit) const
 			d1 = -DV + sq;
 			d2 = -DV - sq;
 			if (d1 < d2) {
-				if (d1 > 0)
+				if (d1 > 0) {
 					hit.Set(&ray, d1, this);
+					return true;
+				}
 			}
 			else {
-				if (d2 > 0)
+				if (d2 > 0) {
 					hit.Set(&ray, d2, this);
+					return true;
+				}
 			}
 		}
-		return true;
 	}
 	
 return false;
