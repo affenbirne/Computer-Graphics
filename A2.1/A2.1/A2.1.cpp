@@ -1,7 +1,6 @@
-// Excercise_2_1.cpp
+// A2.1.cpp
+// Weber / Kirk
 
-
-#include "stdafx.h"
 #include <iostream>
 
 //Excercise 1a)
@@ -41,9 +40,9 @@ int main()
 
 	for (int i = 0; i < 10; i++)
 	{
-		f_values[i] = function_f(i+1);
-		g_values[i] = function_g(i+1);
-		h_values[i] = function_h((float)(i+1));
+		f_values[i] = function_f(i + 1);
+		g_values[i] = function_g(i + 1);
+		h_values[i] = function_h((float)(i + 1));
 	}
 
 	cout << "f" << "\t" << "g" << "\t" << "h" << endl;
@@ -56,6 +55,6 @@ int main()
 	cin.get();
 
 
-    return 0;
+	return 0;
 }
 
