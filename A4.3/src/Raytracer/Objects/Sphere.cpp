@@ -36,65 +36,37 @@ void Sphere::GetIntersection(const Ray &ray, float distance, Intersection &inter
 bool Sphere::HitTest(const Ray &ray, RayHit &hit) const
 {
 	hit.Set(&ray, 0, NULL);
-	// Equation: Vt^2 + Dt + |OC|^2  =  R^2
-	float V = length(ray.GetDirection());
-	V *= V;
-	float3 OC = ray.GetOrigin() - center;
-	float D = 2.0f * dot(OC, ray.GetDirection());
 
-	if (V == 0) {
-		// no quadratic equation
-		if (D != 0) {
-			float dist = length(OC);
-			dist = (radius2 - dist*dist) / D;
-			if (dist > 0) {
-				hit.Set(&ray, dist, this);
-				return true;
-			}
-		}
-		// else: no linear equation either
+	float3 distance = ray.GetOrigin() - center;
+	float a = dot(ray.GetDirection(), ray.GetDirection());
+	float b = 2.0f * dot(ray.GetDirection(), distance);
+	float c = dot(distance, distance) - radius2;
+
+	float discriminant = b * b - 4.0f * a * c;
+	if (discriminant < 0.0f)
+		return false;
+
+	float root = sqrt(discriminant);
+	float q;
+	if (b < 0.0f)
+		q = (-b - root) / 2.0f;
+	else
+		q = (-b + root) / 2.0f;
+
+	float t0 = q / a;
+	float t1 = c / q;
+	if (t0 > t1) {
+		float t = t0;
+		t0 = t1;
+		t1 = t;
 	}
-	else {
-		// quadratic equation
-		if (D == 0) {
-			// no linear part
-			float dist = length(OC);
-			dist = (radius2 - dist*dist);
-			if (dist < 0) {
-				// no real solution
-				return false;
-			}
-			dist = sqrt(dist / V);
-			// only positive value of interest
-			hit.Set(&ray, dist, this);
-			return true;
-		}
-		else {
-			float d1, d2;
-			float DV = 0.5f * D / V;
-			float sq = length(OC);
-			sq = DV*DV + (radius2 - sq*sq) / V;
-			if (sq < 0.0f) {
-				// no real solution
-				return false;
-			}
-			sq = sqrt(sq);
-			d1 = -DV + sq;
-			d2 = -DV - sq;
-			if (d1 < d2) {
-				if (d1 > 0) {
-					hit.Set(&ray, d1, this);
-					return true;
-				}
-			}
-			else {
-				if (d2 > 0) {
-					hit.Set(&ray, d2, this);
-					return true;
-				}
-			}
-		}
-	}
-	
-return false;
+
+	if (t1 < 0)
+		return false;
+	else if (t0 < 0)
+		hit.Set(t1, this);
+	else
+		hit.Set(t0, this);
+
+	return true;
 }
