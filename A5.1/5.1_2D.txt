@@ -1,0 +1,22 @@
+drawRotatedQuad(V1, V2, V3, V4) {
+	pushMatrix();
+
+	translate(-V1);
+	// or (2D):
+	// multMatrix( [1,0,-V1[0], 0,1,-V1[1], 0,0,1] );
+
+	rotate(45);	// or -45, cause counter-clockwise in 3.3
+			// and camera looks in -z direction
+	// or (2D):
+	// multMatrix( [0.7071,-0.7071,0, 0.7071,0.7071,0, 0,0,1] );
+
+	translate(V1);
+	// or (2D):
+	// multMatrix( [1,0,V1[0], 0,1,V1[1], 0,0,1] );
+
+	drawTriangle(V1, V2, V3);	// V4-V3
+					// | / |
+	drawTriangle(V1, V3, V4);	// V1-V2
+
+	popMatrix(); // back to old coordinates
+}
