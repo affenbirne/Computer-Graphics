@@ -50,8 +50,10 @@ void SimpleRasterizer::DrawSpan(int x1, int x2, int y, float z1, float z2, vec3 
 	int abs = x2 - x1;
 	for (int i = offset; i != abs + offset; i += direction) {
 		float t = (float) i / abs;
-		// TODO: Gouraud Shading / [z-buffer]
-		image->SetPixel(x1 + i, y, t * color1 + (1.0f - t) * color2);
+		if (zBuffer[y * image->GetWidth() + (x1 + i)] > (1.0f - t) * z1 + t * z2) {
+			image->SetPixel(x1 + i, y, (1.0f - t) * color1 + t * color2);
+			zBuffer[y * image->GetWidth() + (x1 + i)] = (1.0f - t) * z1 + t * z2;
+		}
 	}
 }
 
@@ -73,28 +75,44 @@ void SimpleRasterizer::DrawTriangle(const Triangle &t)
 	float x1 = top.x, x2 = top.x;
 	
 	// top to middle
-	int abs = (int)round(top.y - bottom.y);
-	int half = (int)round(top.y - middle.y);
-	
+	float abs = top.y - bottom.y;
+	float half = top.y - middle.y;
 	// TODO: Better would be Bresenhams Alg
 	float delta_x1 = (half == 0) ? 0 : (middle.x - top.x) / half;
 	float delta_x2 = (abs == 0) ? 0 : (bottom.x - top.x) / abs;
-	int j = 0;
-	// TODO: sth wrong, still infinity loop
-	while (j <= abs) {
-		for (int i = 0; i + j <= half; i++, j++, y--) {
-			float u = (float) i / half;
-			float v = (float) j / abs;
-			DrawSpan((int)round(x1), (int)round(x2), y,
-				(1.0f - u) * top.z + u * middle.z, (1.0f - v) * top.z + v * bottom.z,
-				(1.0f - u) * t.color[top_i] + u * t.color[middle_i],
-				(1.0f - v) * t.color[top_i] + v * t.color[bottom_i]);
-			x1 += delta_x1;
-			x2 += delta_x2;
-		}
-		// middle to bottom
-		half = (int)round(middle.y - bottom.y);
-		delta_x1 = (half == 0) ? 0 : (bottom.x - middle.x) / half;
+	int i = 0, j = 0, ymax = (int)round(middle.y);
+	while (y >= ymax) {
+		float u = (float)i / half;
+		float v = (float)j / abs;
+
+		float z1 = (1.0f - u) * top.z + u * middle.z;
+		float z2 = (1.0f - v) * top.z + v * bottom.z;
+		DrawSpan((int)round(x1), (int)round(x2), y, z1, z2,
+			(1.0f - u) * t.color[top_i] + u * t.color[middle_i],
+			(1.0f - v) * t.color[top_i] + v * t.color[bottom_i]);
+		
+		x1 += delta_x1;
+		x2 += delta_x2;
+		i++, j++, y--;
+	}
+	// middle to bottom
+	half = middle.y - bottom.y;
+	delta_x1 = (half == 0) ? 0 : (bottom.x - middle.x) / half;
+	ymax = (int)round(bottom.y);
+	i = 0;
+	while (y >= ymax) {
+		float u = (float)i / half;
+		float v = (float)j / abs;
+
+		float z1 = (1.0f - u) * middle.z + u * bottom.z;
+		float z2 = (1.0f - v) * top.z + v * bottom.z;
+		DrawSpan((int)round(x1), (int)round(x2), y, z1, z2,
+			(1.0f - u) * t.color[middle_i] + u * t.color[bottom_i],
+			(1.0f - v) * t.color[top_i] + v * t.color[bottom_i]);
+
+		x1 += delta_x1;
+		x2 += delta_x2;
+		i++, j++, y--;
 	}
 }
 
@@ -170,7 +188,8 @@ void SimpleRasterizer::RenderMesh(const Mesh *mesh)
     renderTriangles.push_back(t);
   }
 
-  //TODO bonus task: Painter's Algorithm
+  //bonus task: Painter's Algorithm
+  this->SortTriangles(renderTriangles);
   // Draw the triangles.
   foreach(Triangle, triangle, renderTriangles)
     DrawTriangle(*triangle);
