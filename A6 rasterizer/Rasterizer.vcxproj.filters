@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Quelldateien\Raytracer">
+      <UniqueIdentifier>{5b8881c9-fc54-4731-9f9f-9a25804687c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Raytracer\Scenes">
+      <UniqueIdentifier>{5fdc8180-8464-478e-9211-8d136f69a7a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Raytracer\Objects">
+      <UniqueIdentifier>{311f64e7-7cec-4846-8bd2-ed3e21d3dd71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Windowing">
+      <UniqueIdentifier>{a205c0c9-f2ac-43f5-815e-2f61515aec42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Rasterizer">
+      <UniqueIdentifier>{0c8a8b07-9a7e-468b-90c0-fa739d9d2d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\Raytracer">
+      <UniqueIdentifier>{f79f58c2-8c71-44a2-a9c8-13bb3debc66b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Raytracer\Objects">
+      <UniqueIdentifier>{4712ae95-8e19-4e63-afe7-88169ca21c14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Raytracer\Scenes">
+      <UniqueIdentifier>{ecb1785a-a130-45f2-8587-f792d8da88df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Raytracer\Internal">
+      <UniqueIdentifier>{bb27b5ab-7dd1-432c-8be2-62d181f3026e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Windowing">
+      <UniqueIdentifier>{b26105c5-eab3-4bb4-8dde-b976797ae09e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Rasterizer">
+      <UniqueIdentifier>{84678a12-69e9-49df-9bf4-8a3599efb3b0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Accelerator.cpp">
+      <Filter>Quelldateien\Raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Image.cpp">
+      <Filter>Quelldateien\Raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\PhongIntegrator.cpp">
+      <Filter>Quelldateien\Raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Ray.cpp">
+      <Filter>Quelldateien\Raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\RayHit.cpp">
+      <Filter>Quelldateien\Raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Renderer.cpp">
+      <Filter>Quelldateien\Raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\SimpleAccelerator.cpp">
+      <Filter>Quelldateien\Raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\SimpleRenderer.cpp">
+      <Filter>Quelldateien\Raytracer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Scenes\Camera.cpp">
+      <Filter>Quelldateien\Raytracer\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Scenes\Intersection.cpp">
+      <Filter>Quelldateien\Raytracer\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Scenes\Light.cpp">
+      <Filter>Quelldateien\Raytracer\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Scenes\Material.cpp">
+      <Filter>Quelldateien\Raytracer\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Scenes\PhysicalObject.cpp">
+      <Filter>Quelldateien\Raytracer\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Scenes\PointLight.cpp">
+      <Filter>Quelldateien\Raytracer\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Scenes\Scene.cpp">
+      <Filter>Quelldateien\Raytracer\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Scenes\SceneObject.cpp">
+      <Filter>Quelldateien\Raytracer\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Objects\Mesh.cpp">
+      <Filter>Quelldateien\Raytracer\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Objects\Sphere.cpp">
+      <Filter>Quelldateien\Raytracer\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raytracer\Objects\Triangle.cpp">
+      <Filter>Quelldateien\Raytracer\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Windowing\DisplayWindow.cpp">
+      <Filter>Quelldateien\Windowing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rasterizer\SimpleRasterizer.cpp">
+      <Filter>Quelldateien\Rasterizer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Raytracer\Accelerator.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\IIntegrator.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Image.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Intersection.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\PhongIntegrator.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Ray.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\RayHit.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Raytracer.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Renderer.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\SimpleAccelerator.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\SimpleRenderer.h">
+      <Filter>Headerdateien\Raytracer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Objects\Mesh.h">
+      <Filter>Headerdateien\Raytracer\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Objects\Sphere.h">
+      <Filter>Headerdateien\Raytracer\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Objects\Triangle.h">
+      <Filter>Headerdateien\Raytracer\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Scenes\Camera.h">
+      <Filter>Headerdateien\Raytracer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Scenes\Light.h">
+      <Filter>Headerdateien\Raytracer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Scenes\Material.h">
+      <Filter>Headerdateien\Raytracer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Scenes\PhysicalObject.h">
+      <Filter>Headerdateien\Raytracer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Scenes\PointLight.h">
+      <Filter>Headerdateien\Raytracer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Scenes\Scene.h">
+      <Filter>Headerdateien\Raytracer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Scenes\SceneObject.h">
+      <Filter>Headerdateien\Raytracer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Scenes\SceneObjectType.h">
+      <Filter>Headerdateien\Raytracer\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Raytracer\Internal\foreach.h">
+      <Filter>Headerdateien\Raytracer\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Windowing\DisplayWindow.h">
+      <Filter>Headerdateien\Windowing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Rasterizer\SimpleRasterizer.h">
+      <Filter>Headerdateien\Rasterizer</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
