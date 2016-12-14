@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B7F027C0-C5B0-4D05-892E-C4794F267E58}</ProjectGuid>
+    <RootNamespace>Raytracer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>include;glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Raytracer\Accelerator.cpp" />
+    <ClCompile Include="src\Raytracer\Image.cpp" />
+    <ClCompile Include="src\Raytracer\PhongIntegrator.cpp" />
+    <ClCompile Include="src\Raytracer\Ray.cpp" />
+    <ClCompile Include="src\Raytracer\RayHit.cpp" />
+    <ClCompile Include="src\Raytracer\Renderer.cpp" />
+    <ClCompile Include="src\Raytracer\SimpleAccelerator.cpp" />
+    <ClCompile Include="src\Raytracer\SimpleRenderer.cpp" />
+    <ClCompile Include="src\Raytracer\Scenes\Camera.cpp" />
+    <ClCompile Include="src\Raytracer\Scenes\Intersection.cpp" />
+    <ClCompile Include="src\Raytracer\Scenes\Light.cpp" />
+    <ClCompile Include="src\Raytracer\Scenes\Material.cpp" />
+    <ClCompile Include="src\Raytracer\Scenes\PhysicalObject.cpp" />
+    <ClCompile Include="src\Raytracer\Scenes\PointLight.cpp" />
+    <ClCompile Include="src\Raytracer\Scenes\Scene.cpp" />
+    <ClCompile Include="src\Raytracer\Scenes\SceneObject.cpp" />
+    <ClCompile Include="src\Raytracer\Objects\Mesh.cpp" />
+    <ClCompile Include="src\Raytracer\Objects\Sphere.cpp" />
+    <ClCompile Include="src\Raytracer\Objects\Triangle.cpp" />
+    <ClCompile Include="src\Windowing\DisplayWindow.cpp" />
+    <ClCompile Include="src\Rasterizer\SimpleRasterizer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Raytracer\Accelerator.h" />
+    <ClInclude Include="include\Raytracer\IIntegrator.h" />
+    <ClInclude Include="include\Raytracer\Image.h" />
+    <ClInclude Include="include\Raytracer\Intersection.h" />
+    <ClInclude Include="include\Raytracer\PhongIntegrator.h" />
+    <ClInclude Include="include\Raytracer\Ray.h" />
+    <ClInclude Include="include\Raytracer\RayHit.h" />
+    <ClInclude Include="include\Raytracer\Raytracer.h" />
+    <ClInclude Include="include\Raytracer\Renderer.h" />
+    <ClInclude Include="include\Raytracer\SimpleAccelerator.h" />
+    <ClInclude Include="include\Raytracer\SimpleRenderer.h" />
+    <ClInclude Include="include\Raytracer\Objects\Mesh.h" />
+    <ClInclude Include="include\Raytracer\Objects\Sphere.h" />
+    <ClInclude Include="include\Raytracer\Objects\Triangle.h" />
+    <ClInclude Include="include\Raytracer\Scenes\Camera.h" />
+    <ClInclude Include="include\Raytracer\Scenes\Light.h" />
+    <ClInclude Include="include\Raytracer\Scenes\Material.h" />
+    <ClInclude Include="include\Raytracer\Scenes\PhysicalObject.h" />
+    <ClInclude Include="include\Raytracer\Scenes\PointLight.h" />
+    <ClInclude Include="include\Raytracer\Scenes\Scene.h" />
+    <ClInclude Include="include\Raytracer\Scenes\SceneObject.h" />
+    <ClInclude Include="include\Raytracer\Scenes\SceneObjectType.h" />
+    <ClInclude Include="include\Raytracer\Internal\foreach.h" />
+    <ClInclude Include="include\Windowing\DisplayWindow.h" />
+    <ClInclude Include="include\Rasterizer\SimpleRasterizer.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
